@@ -26,7 +26,24 @@ provider "aws" {
 
   # Ignore specific tags to avoid unnecessary state changes
   ignore_tags {
-    key_prefixes = ["Environment", "Owner"]
+    keys = [
+      "APPID",
+      "BILLINGCODE",
+      "BILLINGCONTACT",
+      "BUSINESSAREA",
+      "CMS",
+      "COUNTRY",
+      "CSCLASS",
+      "CSQUAL",
+      "CTYPE",
+      "ENVIRONMENT",
+      "FUNCTION",
+      "GROUPCONTACT",
+      "MEMBERFIRM",
+      "PRIMARYCONTACT",
+      "SECONDARYCONTACT",
+      "cpm backup"
+    ]
   }
 }
 
@@ -36,7 +53,7 @@ resource "aws_sqs_queue" "task_management_dlq" {
 
   tags = {
     Environment = var.environment_tag
-    Owner       = "workflow-team"
+    Application = "workflow"
   }
 }
 
