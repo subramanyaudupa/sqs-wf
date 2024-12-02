@@ -32,7 +32,7 @@ provider "aws" {
 
 # Create Dead-Letter Queue (DLQ)
 resource "aws_sqs_queue" "task_management_dlq" {
-  name = "${var.environment_tag}_${var.aws_region}_task_management_dlq"
+  name = "${var.environment_tag}-${var.aws_region}-wf-taskmanagement-dlq"
 
   tags = {
     Environment = var.environment_tag
@@ -42,7 +42,7 @@ resource "aws_sqs_queue" "task_management_dlq" {
 
 # Create Main SQS Queue with DLQ
 resource "aws_sqs_queue" "task_management_queue" {
-  name                      = var.sqs_name
+  name                      = "${var.environment_tag}-${var.aws_region}-wf-taskmanagement-queue"
   delay_seconds             = var.sqs_delay_seconds
   max_message_size          = var.sqs_max_message_size
   message_retention_seconds = var.sqs_message_retention_seconds
