@@ -2,6 +2,7 @@ aws_region = "us-east-1"
 environment_tag = "int"
 
 # SQS Configuration
+sqs_name                      = "int-us-wf-taskmanagement-queue"
 sqs_delay_seconds             = 0
 sqs_max_message_size          = 262144
 sqs_message_retention_seconds = 345600
