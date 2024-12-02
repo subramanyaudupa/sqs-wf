@@ -4,6 +4,12 @@ variable "aws_region" {
   type        = string
 }
 
+# Environment Tag
+variable "environment_tag" {
+  description = "Environment tag for resources (e.g., dev, qa)"
+  type        = string
+}
+
 # SQS Queue Variables
 variable "sqs_name" {
   description = "Name of the SQS queue"
@@ -34,13 +40,12 @@ variable "sqs_visibility_timeout_seconds" {
   default     = 30
 }
 
-# Parameter Store Variable
+# Parameter Store Variables
 variable "sqs_url_param_name" {
   description = "Parameter name to store SQS URL in Parameter Store"
   type        = string
 }
 
-# Kafka Topic Parameter Store Variables
 variable "kafka_topic_param_name" {
   description = "Parameter name to store Kafka topic name in Parameter Store"
   type        = string
